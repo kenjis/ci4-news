@@ -41,16 +41,20 @@ class News extends BaseController
     {
         helper('form');
 
-        $model = model(NewsModel::class);
+        $post = $this->request->getPost(['title', 'body']);
 
-        if ($this->request->getMethod() === 'post' && $this->validate([
-            'title' => 'required|min_length[3]|max_length[255]',
-            'body'  => 'required|min_length[10]|max_length[5000]',
-        ])) {
+        if (
+            strtolower($this->request->getMethod()) === 'post'
+            && $this->validateData($post, [
+                'title' => 'required|min_length[3]|max_length[255]',
+                'body'  => 'required|min_length[10]|max_length[5000]',
+            ])
+        ) {
+            $model = model(NewsModel::class);
             $model->save([
-                'title' => $this->request->getPost('title'),
-                'slug'  => url_title($this->request->getPost('title'), '-', true),
-                'body'  => $this->request->getPost('body'),
+                'title' => $post['title'],
+                'slug'  => url_title($post['title'], '-', true),
+                'body'  => $post['body'],
             ]);
 
             return view('news/success');
