@@ -32,7 +32,11 @@
         "test": "phpunit",
         "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
         "cs-fix": "php-cs-fixer fix --ansi --verbose --diff --using-cache=yes",
-        "style": "@cs-fix"
+        "style": "@cs-fix",
+        "analyze": [
+            "bash -c \"XDEBUG_MODE=off phpstan analyse\""
+        ],
+        "sa": "@analyze"
     },
     "support": {
         "forum": "http://forum.codeigniter.com/",
