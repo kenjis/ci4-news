@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d648ee3b65e8d352e12e15817702e7cd",
+    "content-hash": "5ddbc0513034eebf42e4deeb522dceb1",
     "packages": [
         {
-            "name": "codeigniter4/framework",
+            "name": "codeigniter4/codeigniter4",
             "version": "v4.2.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "6ffad151a303c5817ad6b2d9b996d07960aff2cc"
+                "url": "https://github.com/codeigniter4/CodeIgniter4.git",
+                "reference": "9d952480df1059081ddccabd7ae1b38d45c659b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/6ffad151a303c5817ad6b2d9b996d07960aff2cc",
-                "reference": "6ffad151a303c5817ad6b2d9b996d07960aff2cc",
+                "url": "https://api.github.com/repos/codeigniter4/CodeIgniter4/zipball/9d952480df1059081ddccabd7ae1b38d45c659b0",
+                "reference": "9d952480df1059081ddccabd7ae1b38d45c659b0",
                 "shasum": ""
             },
             "require": {
@@ -36,8 +36,13 @@
                 "friendsofphp/php-cs-fixer": "~3.13.0",
                 "mikey179/vfsstream": "^1.6",
                 "nexusphp/cs-config": "^3.6",
+                "nexusphp/tachycardia": "^1.0",
+                "php-coveralls/php-coveralls": "^2.5",
+                "phpstan/phpstan": "^1.7.1",
+                "phpunit/phpcov": "^8.2",
                 "phpunit/phpunit": "^9.1",
-                "predis/predis": "^1.1 || ^2.0"
+                "predis/predis": "^1.1 || ^2.0",
+                "rector/rector": "0.14.6"
             },
             "suggest": {
                 "ext-dom": "If you use TestResponse",
@@ -59,6 +64,11 @@
                 "ext-xdebug": "If you use CIUnitTestCase::assertHeaderEmitted()"
             },
             "type": "project",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "4.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "CodeIgniter\\": "system/"
@@ -67,7 +77,42 @@
                     "**/Database/Migrations/**"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "CodeIgniter\\": "tests/system/",
+                    "CodeIgniter\\AutoReview\\": "tests/AutoReview/",
+                    "Utils\\": "utils/"
+                }
+            },
+            "scripts": {
+                "post-update-cmd": [
+                    "CodeIgniter\\ComposerScripts::postUpdate",
+                    "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
+                ],
+                "analyze": [
+                    "phpstan analyze",
+                    "rector process --dry-run"
+                ],
+                "sa": [
+                    "@analyze"
+                ],
+                "test": [
+                    "phpunit"
+                ],
+                "cs": [
+                    "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.user-guide.php",
+                    "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.no-header.php",
+                    "php-cs-fixer fix --ansi --verbose --dry-run --diff"
+                ],
+                "cs-fix": [
+                    "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.user-guide.php",
+                    "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.no-header.php",
+                    "php-cs-fixer fix --ansi --verbose --diff"
+                ],
+                "style": [
+                    "@cs-fix"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -75,10 +120,11 @@
             "homepage": "https://codeigniter.com",
             "support": {
                 "forum": "http://forum.codeigniter.com/",
+                "source": "https://github.com/codeigniter4/CodeIgniter4",
                 "slack": "https://codeigniterchat.slack.com",
-                "source": "https://github.com/codeigniter4/CodeIgniter4"
+                "issues": "https://github.com/codeigniter4/CodeIgniter4/issues"
             },
-            "time": "2022-11-05T22:23:07+00:00"
+            "time": "2022-11-05T22:20:11+00:00"
         },
         {
             "name": "kint-php/kint",
@@ -2229,9 +2275,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4 || ^8.0"
