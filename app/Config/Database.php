@@ -25,23 +25,24 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
-        'DBDriver' => 'MySQLi',
-        'DBPrefix' => '',
-        'pConnect' => false,
-        'DBDebug'  => true,
-        'charset'  => 'utf8',
-        'DBCollat' => 'utf8_general_ci',
-        'swapPre'  => '',
-        'encrypt'  => false,
-        'compress' => false,
-        'strictOn' => false,
-        'failover' => [],
-        'port'     => 3306,
+        'DSN'         => '',
+        'hostname'    => '',
+        'username'    => '',
+        'password'    => '',
+        'database'    => 'ci4tutorial.db',
+        'DBDriver'    => 'SQLite3',
+        'DBPrefix'    => '',
+        'pConnect'    => false,
+        'DBDebug'     => true,
+        'charset'     => 'utf8',
+        'DBCollat'    => 'utf8_general_ci',
+        'swapPre'     => '',
+        'encrypt'     => false,
+        'compress'    => false,
+        'strictOn'    => false,
+        'failover'    => [],
+        'port'        => 0,
+        'foreignKeys' => true,
     ];
 
     /**
@@ -50,7 +51,7 @@ class Database extends Config
      */
     public array $tests = [
         'DSN'         => '',
-        'hostname'    => '127.0.0.1',
+        'hostname'    => '',
         'username'    => '',
         'password'    => '',
         'database'    => ':memory:',
@@ -65,7 +66,7 @@ class Database extends Config
         'compress'    => false,
         'strictOn'    => false,
         'failover'    => [],
-        'port'        => 3306,
+        'port'        => 0,
         'foreignKeys' => true,
     ];
 
