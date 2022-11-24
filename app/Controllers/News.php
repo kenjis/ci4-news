@@ -62,6 +62,7 @@ class News extends BaseController
                 . view('templates/footer');
         }
 
+        // Returns the form.
         return view('templates/header', ['title' => 'Create a news item'])
             . view('news/create')
             . view('templates/footer');
