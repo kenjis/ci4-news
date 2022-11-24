@@ -57,7 +57,9 @@ class News extends BaseController
                 'body'  => $post['body'],
             ]);
 
-            return view('news/success');
+            return view('templates/header', ['title' => 'Create a news item'])
+                . view('news/success')
+                . view('templates/footer');
         }
 
         return view('templates/header', ['title' => 'Create a news item'])
