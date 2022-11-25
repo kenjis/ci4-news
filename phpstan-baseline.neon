@@ -1,0 +1,12 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method CodeIgniter\\\\HTTP\\\\RequestInterface\\:\\:getPost\\(\\)\\.$#"
+			path: app/Controllers/*.php
+
+		-
+			message: """
+				#^Call to deprecated method getMethod\\(\\) of class CodeIgniter\\\\HTTP\\\\OutgoingRequestInterface\\:
+				The \\$upper functionality will be removed and this will revert to its PSR\\-7 equivalent$#
+			"""
+			path: app/Controllers/*.php
