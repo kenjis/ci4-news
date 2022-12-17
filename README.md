@@ -61,6 +61,7 @@ $ composer test
 - [CodeIgniter4 Composer Installer](https://github.com/kenjis/ci4-composer-installer)
 - [CodeIgniter4 Viewi Demo](https://github.com/kenjis/ci4-viewi-demo)
 - [CodeIgniter 4 Validation Tutorial](https://github.com/kenjis/ci4-validation-tutorial)
+- [CodeIgniter4 Code Modules Test](https://github.com/kenjis/ci4-modules-test)
 - [CodeIgniter3-like Captcha](https://github.com/kenjis/ci3-like-captcha)
 - [PHPUnit Helper](https://github.com/kenjis/phpunit-helper)
 - [CodeIgniter 3 to 4 Upgrade Helper](https://github.com/kenjis/ci3-to-4-upgrade-helper)
