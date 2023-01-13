@@ -30,7 +30,7 @@ ci4-news/
 
 ```console
 $ git clone https://github.com/kenjis/ci4-news
-$ cd /path/to/ci4-news/
+$ cd ci4-news/
 $ composer install
 ```
 
