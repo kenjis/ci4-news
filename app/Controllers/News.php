@@ -7,7 +7,16 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class News extends BaseController
 {
-    public function index()
+    public function getIndex($slug = null)
+    {
+        if ($slug === null) {
+            return $this->index();
+        }
+
+        return $this->view($slug);
+    }
+
+    private function index($slug = null)
     {
         $model = model(NewsModel::class);
 
@@ -21,7 +30,7 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    public function show($slug = null)
+    private function view($slug = null)
     {
         $model = model(NewsModel::class);
 
@@ -38,23 +47,24 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    public function new()
+    public function getCreate()
     {
         helper('form');
 
+        // The form is not submitted, so returns the form.
         return view('templates/header', ['title' => 'Create a news item'])
             . view('news/create')
             . view('templates/footer');
     }
 
-    public function create()
+    public function postCreate()
     {
         helper('form');
 
-        $data = $this->request->getPost(['title', 'body']);
+        $post = $this->request->getPost(['title', 'body']);
 
         // Checks whether the submitted data passed the validation rules.
-        if (! $this->validateData($data, [
+        if (! $this->validateData($post, [
             'title' => 'required|max_length[255]|min_length[3]',
             'body'  => 'required|max_length[5000]|min_length[10]',
         ])) {

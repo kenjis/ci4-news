@@ -6,13 +6,17 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Pages extends BaseController
 {
-    public function index()
+    private function index()
     {
         return view('welcome_message');
     }
 
-    public function view($page = 'home')
+    public function getIndex($page = null)
     {
+        if ($page === null) {
+            return $this->index();
+        }
+
         if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
             throw new PageNotFoundException($page);
