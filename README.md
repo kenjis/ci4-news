@@ -2,6 +2,9 @@
 
 See <https://codeigniter4.github.io/CodeIgniter4/tutorial/index.html>.
 
+If you want to see code to use Auto Routing,
+see the [auto-routing](https://github.com/kenjis/ci4-news/tree/auto-routing#codeigniter-4-news-tutorial) branch.
+
 ## Folder Structure
 
 ```
