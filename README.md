@@ -49,6 +49,36 @@ $ php spark db:seed NewsSeeder
 $ php spark serve
 ```
 
+### URLs
+
+| Method | URL                               | Controller   | Description                         |
+|--------|-----------------------------------|--------------|-------------------------------------|
+| GET    | http://localhost:8080/            | Home::index  | the CodeIgniter Welcome page        |
+| GET    | http://localhost:8080/pages       | Pages::index | the CodeIgniter Welcome page        |
+| GET    | http://localhost:8080/home        | Pages::view  | the “home” page                     |
+| GET    | http://localhost:8080/about       | Pages::view  | the “about” page                    |
+| GET    | http://localhost:8080/shop        | Pages::view  | a “404 - File Not Found” error page |
+| GET    | http://localhost:8080/news        | News::index  | the news list page                  |
+| GET    | http://localhost:8080/news/{slug} | News::view   | the news item page                  |
+| GET    | http://localhost:8080/news/create | News::create | the news create form                |
+| POST   | http://localhost:8080/news/create | News::create | the news creation and the result    |
+
+#### Routes
+
+```
++--------+--------------+------+---------------------------------+----------------+---------------+
+| Method | Route        | Name | Handler                         | Before Filters | After Filters |
++--------+--------------+------+---------------------------------+----------------+---------------+
+| GET    | /            | »    | \App\Controllers\Home::index    |                | toolbar       |
+| GET    | news/create  | »    | \App\Controllers\News::create   |                | toolbar       |
+| GET    | news/([^/]+) | »    | \App\Controllers\News::view/$1  |                | toolbar       |
+| GET    | news         | »    | \App\Controllers\News::index    |                | toolbar       |
+| GET    | pages        | »    | \App\Controllers\Pages::index   |                | toolbar       |
+| GET    | ([^/]+)      | »    | \App\Controllers\Pages::view/$1 |                | toolbar       |
+| POST   | news/create  | »    | \App\Controllers\News::create   | csrf           | toolbar       |
++--------+--------------+------+---------------------------------+----------------+---------------+
+```
+
 ### Run PHPUnit Tests
 
 ```console
