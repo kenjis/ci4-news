@@ -2,8 +2,7 @@
 
 See <https://codeigniter4.github.io/CodeIgniter4/tutorial/index.html>.
 
-If you want to see code to use Auto Routing,
-see the [auto-routing](https://github.com/kenjis/ci4-news/tree/auto-routing#codeigniter-4-news-tutorial) branch.
+But this code uses [Auto Routing (Improved)](https://codeigniter4.github.io/CodeIgniter4/incoming/routing.html#auto-routing-improved).
 
 ## Folder Structure
 
@@ -34,6 +33,7 @@ ci4-news/
 ```console
 $ git clone https://github.com/kenjis/ci4-news
 $ cd ci4-news/
+$ git checkout auto-routing
 $ composer install
 ```
 
@@ -54,32 +54,30 @@ $ php spark serve
 
 ### URLs
 
-| Method | URL                               | Controller   | Description                         |
-|--------|-----------------------------------|--------------|-------------------------------------|
-| GET    | http://localhost:8080/            | Home::index  | the CodeIgniter Welcome page        |
-| GET    | http://localhost:8080/pages       | Pages::index | the CodeIgniter Welcome page        |
-| GET    | http://localhost:8080/home        | Pages::view  | the “home” page                     |
-| GET    | http://localhost:8080/about       | Pages::view  | the “about” page                    |
-| GET    | http://localhost:8080/shop        | Pages::view  | a “404 - File Not Found” error page |
-| GET    | http://localhost:8080/news        | News::index  | the news list page                  |
-| GET    | http://localhost:8080/news/{slug} | News::show   | the news item page                  |
-| GET    | http://localhost:8080/news/new    | News::new    | the news create form                |
-| POST   | http://localhost:8080/news        | News::create | the news creation and the result    |
+| Method | URL                               | Controller       | Description                         |
+|--------|-----------------------------------|------------------|-------------------------------------|
+| GET    | http://localhost:8080/            | Home::getIndex   | the CodeIgniter Welcome page        |
+| GET    | http://localhost:8080/pages       | Pages::getIndex  | the CodeIgniter Welcome page        |
+| GET    | http://localhost:8080/pages/home  | Pages::getIndex  | the “home” page                     |
+| GET    | http://localhost:8080/pages/about | Pages::getIndex  | the “about” page                    |
+| GET    | http://localhost:8080/pages/shop  | Pages::getIndex  | a “404 - File Not Found” error page |
+| GET    | http://localhost:8080/news        | News::getIndex   | the news list page                  |
+| GET    | http://localhost:8080/news/{slug} | News::getIndex   | the news item page                  |
+| GET    | http://localhost:8080/news/create | News::getCreate  | the news create form                |
+| POST   | http://localhost:8080/news/create | News::postCreate | the news creation and the result    |
 
 #### Routes
 
 ```
-+--------+--------------+------+---------------------------------+----------------+---------------+
-| Method | Route        | Name | Handler                         | Before Filters | After Filters |
-+--------+--------------+------+---------------------------------+----------------+---------------+
-| GET    | /            | »    | \App\Controllers\Home::index    |                | toolbar       |
-| GET    | news         | »    | \App\Controllers\News::index    |                | toolbar       |
-| GET    | news/new     | »    | \App\Controllers\News::new      |                | toolbar       |
-| GET    | news/([^/]+) | »    | \App\Controllers\News::show/$1  |                | toolbar       |
-| GET    | pages        | »    | \App\Controllers\Pages::index   |                | toolbar       |
-| GET    | ([^/]+)      | »    | \App\Controllers\Pages::view/$1 |                | toolbar       |
-| POST   | news         | »    | \App\Controllers\News::create   | csrf           | toolbar       |
-+--------+--------------+------+---------------------------------+----------------+---------------+
++------------+-------------+------+-----------------------------------+----------------+---------------+
+| Method     | Route       | Name | Handler                           | Before Filters | After Filters |
++------------+-------------+------+-----------------------------------+----------------+---------------+
+| GET(auto)  | /           |      | \App\Controllers\Home::getIndex   |                | toolbar       |
+| GET(auto)  | news[/..]   |      | \App\Controllers\News::getIndex   |                | toolbar       |
+| GET(auto)  | news/create |      | \App\Controllers\News::getCreate  |                | toolbar       |
+| POST(auto) | news/create |      | \App\Controllers\News::postCreate | csrf           | toolbar       |
+| GET(auto)  | pages[/..]  |      | \App\Controllers\Pages::getIndex  |                | toolbar       |
++------------+-------------+------+-----------------------------------+----------------+---------------+
 ```
 
 ### Run PHPUnit Tests
