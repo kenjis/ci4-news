@@ -36,6 +36,8 @@ $ composer install
 
 ### Database Migration and Seeding
 
+Optional, if you use SQLite3 by default.
+
 ```console
 $ php spark migrate
 $ php spark db:seed NewsSeeder
