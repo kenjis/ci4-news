@@ -38,17 +38,18 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    public function create()
+    public function new()
     {
         helper('form');
 
-        // Checks whether the form is submitted.
-        if (! $this->request->is('post')) {
-            // The form is not submitted, so returns the form.
-            return view('templates/header', ['title' => 'Create a news item'])
-                . view('news/create')
-                . view('templates/footer');
-        }
+        return view('templates/header', ['title' => 'Create a news item'])
+            . view('news/create')
+            . view('templates/footer');
+    }
+
+    public function create()
+    {
+        helper('form');
 
         // Checks whether the submitted data passed the validation rules.
         if (! $this->validate([
@@ -56,9 +57,7 @@ class News extends BaseController
             'body'  => 'required|max_length[5000]|min_length[10]',
         ])) {
             // The validation fails, so returns the form.
-            return view('templates/header', ['title' => 'Create a news item'])
-                . view('news/create')
-                . view('templates/footer');
+            return $this->new();
         }
 
         // Gets the validated data.

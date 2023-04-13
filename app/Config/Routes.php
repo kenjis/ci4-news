@@ -9,7 +9,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->match(['get', 'post'], 'news/create', [News::class, 'create']);
+$routes->get('news/new', [News::class, 'new']);
+$routes->post('news/create', [News::class, 'create']);
 $routes->get('news/(:segment)', [News::class, 'view']);
 $routes->get('news', [News::class, 'index']);
 $routes->get('pages', [Pages::class, 'index']);
