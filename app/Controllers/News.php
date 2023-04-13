@@ -50,10 +50,8 @@ class News extends BaseController
                 . view('templates/footer');
         }
 
-        $post = $this->request->getPost(['title', 'body']);
-
         // Checks whether the submitted data passed the validation rules.
-        if (! $this->validateData($post, [
+        if (! $this->validate([
             'title' => 'required|max_length[255]|min_length[3]',
             'body'  => 'required|max_length[5000]|min_length[10]',
         ])) {
@@ -62,6 +60,9 @@ class News extends BaseController
                 . view('news/create')
                 . view('templates/footer');
         }
+
+        // Gets the validated data.
+        $post = $this->validator->getValidated();
 
         $model = model(NewsModel::class);
 
