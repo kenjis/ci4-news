@@ -55,4 +55,21 @@ final class NewsTest extends CIUnitTestCase
         $result->assertSee('Mocked body. Bra, bra, bra...');
         $result->assertDontSee('Elvis was sighted at the Podunk internet cafe.');
     }
+
+    public function testPostNews()
+    {
+        $result = $this->post(
+            'news/create',
+            [
+                'csrf_test_name' => csrf_hash(),
+                'title'          => 'Test',
+                'body'           => 'This is testing.',
+            ]
+        );
+
+        $result->assertStatus(200);
+
+        $result->assertSee('<title>CodeIgniter Tutorial</title>');
+        $result->assertSee('News item created successfully.');
+    }
 }
