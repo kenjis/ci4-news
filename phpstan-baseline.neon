@@ -1,8 +1,3 @@
 parameters:
 	ignoreErrors:
-		-
-			message: """
-				#^Call to deprecated method getMethod\\(\\) of class CodeIgniter\\\\HTTP\\\\Request\\:
-				The \\$upper functionality will be removed and this will revert to its PSR\\-7 equivalent$#
-			"""
-			path: app/Controllers/*.php
+
