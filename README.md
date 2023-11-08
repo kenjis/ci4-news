@@ -105,6 +105,7 @@ $ composer test
 - [CodeIgniter 4 Validation Tutorial](https://github.com/kenjis/ci4-validation-tutorial)
 - [CodeIgniter4 Code Modules Test](https://github.com/kenjis/ci4-modules-test)
 - [CodeIgniter 4 File Upload](https://github.com/kenjis/ci4-file-upload)
+- [CodeIgniter 4 QueryBuilder Batch Sample](https://github.com/kenjis/ci4-qb-batch-sample)
 
 ### Building Development Environment
 
