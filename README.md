@@ -62,9 +62,9 @@ $ php spark serve
 | GET    | http://localhost:8080/about       | Pages::view  | the “about” page                    |
 | GET    | http://localhost:8080/shop        | Pages::view  | a “404 - File Not Found” error page |
 | GET    | http://localhost:8080/news        | News::index  | the news list page                  |
-| GET    | http://localhost:8080/news/{slug} | News::view   | the news item page                  |
-| GET    | http://localhost:8080/news/create | News::create | the news create form                |
-| POST   | http://localhost:8080/news/create | News::create | the news creation and the result    |
+| GET    | http://localhost:8080/news/{slug} | News::show   | the news item page                  |
+| GET    | http://localhost:8080/news/new    | News::new    | the news create form                |
+| POST   | http://localhost:8080/news        | News::create | the news creation and the result    |
 
 #### Routes
 
@@ -73,12 +73,12 @@ $ php spark serve
 | Method | Route        | Name | Handler                         | Before Filters | After Filters |
 +--------+--------------+------+---------------------------------+----------------+---------------+
 | GET    | /            | »    | \App\Controllers\Home::index    |                | toolbar       |
-| GET    | news/create  | »    | \App\Controllers\News::create   |                | toolbar       |
-| GET    | news/([^/]+) | »    | \App\Controllers\News::view/$1  |                | toolbar       |
 | GET    | news         | »    | \App\Controllers\News::index    |                | toolbar       |
+| GET    | news/new     | »    | \App\Controllers\News::new      |                | toolbar       |
+| GET    | news/([^/]+) | »    | \App\Controllers\News::show/$1  |                | toolbar       |
 | GET    | pages        | »    | \App\Controllers\Pages::index   |                | toolbar       |
 | GET    | ([^/]+)      | »    | \App\Controllers\Pages::view/$1 |                | toolbar       |
-| POST   | news/create  | »    | \App\Controllers\News::create   | csrf           | toolbar       |
+| POST   | news         | »    | \App\Controllers\News::create   | csrf           | toolbar       |
 +--------+--------------+------+---------------------------------+----------------+---------------+
 ```
 
