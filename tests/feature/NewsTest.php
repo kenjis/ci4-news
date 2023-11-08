@@ -45,7 +45,7 @@ final class NewsTest extends CIUnitTestCase
                     'body'  => 'Mocked body. Bra, bra, bra...',
                 ],
             ]);
-        Factories::injectMock('models', 'NewsModel', $newsModel);
+        Factories::injectMock('models', NewsModel::class, $newsModel);
 
         $result = $this->get('news');
 
