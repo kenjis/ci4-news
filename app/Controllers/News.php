@@ -21,7 +21,7 @@ class News extends BaseController
             . view('templates/footer');
     }
 
-    public function show($slug = null)
+    public function show(?string $slug = null)
     {
         $model = model(NewsModel::class);
 
