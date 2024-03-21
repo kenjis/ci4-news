@@ -150,7 +150,7 @@ class App extends BaseConfig
      * Comma-separated:	'10.0.1.200,192.168.5.0/24'
      * Array: ['10.0.1.200', '192.168.5.0/24']
      *
-     * @var string|string[]
+     * @var list<string>|string
      */
     public $proxyIPs = '';
 

@@ -61,7 +61,7 @@ class Cache extends BaseConfig
      *    ['q'] = Enabled, but only take into account the specified list
      *            of query parameters.
      *
-     * @var bool|string[]
+     * @var bool|list<string>
      */
     public $cacheQueryString = false;
 
@@ -124,7 +124,7 @@ class Cache extends BaseConfig
      *
      * @see https://codeigniter.com/user_guide/libraries/caching.html#memcached
      *
-     * @var array<string, boolean|int|string>
+     * @var array<string, bool|int|string>
      */
     public array $memcached = [
         'host'   => '127.0.0.1',
