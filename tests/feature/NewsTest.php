@@ -59,7 +59,7 @@ final class NewsTest extends CIUnitTestCase
     public function testPostNews()
     {
         $result = $this->post(
-            'news/create',
+            'news',
             [
                 'csrf_test_name' => csrf_hash(),
                 'title'          => 'Test',
