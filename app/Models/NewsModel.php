@@ -9,6 +9,11 @@ class NewsModel extends Model
     protected $table         = 'news';
     protected $allowedFields = ['title', 'slug', 'body'];
 
+    /**
+     * @param false|string $slug
+     *
+     * @return array|null
+     */
     public function getNews($slug = false)
     {
         if ($slug === false) {
